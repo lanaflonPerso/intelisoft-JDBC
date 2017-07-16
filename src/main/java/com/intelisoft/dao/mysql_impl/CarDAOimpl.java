@@ -22,15 +22,15 @@ public class CarDAOimpl extends GenericDAO<Car> implements IcarDAO {
 	@Override
 	public Car getByIdWithConsumer(long id) throws SQLException {
 
-		PreparedStatement ps = connection.prepareStatement(CAR_GET_BY_ID_WITH_CONSUMER);
-		ps.setLong(1, id);
-		ResultSet rs = ps.executeQuery();
+		try (PreparedStatement ps = connection.prepareStatement(CAR_GET_BY_ID_WITH_CONSUMER)) {
 
-		Car car = toCarWithConsumer(rs);
+			ps.setLong(1, id);
+			ResultSet rs = ps.executeQuery();
 
-		ps.close();
+			Car car = toCarWithConsumer(rs);
 
-		return car;
+			return car;
+		}
 	}
 
 	private Car toCarWithConsumer(ResultSet rs) throws SQLException {

@@ -22,15 +22,15 @@ public class ConsumerDAOimpl extends GenericDAO<Consumer> implements IconsumerDA
 	@Override
 	public Consumer getByIdWithCars(long id) throws SQLException {
 
-		PreparedStatement ps = connection.prepareStatement(CONSUMER_GET_BY_ID_WITH_CAR);
-		ps.setLong(1, id);
-		ResultSet rs = ps.executeQuery();
+		try (PreparedStatement ps = connection.prepareStatement(CONSUMER_GET_BY_ID_WITH_CAR)) {
 
-		Consumer consumer = toConsumerWithCars(rs);
+			ps.setLong(1, id);
+			ResultSet rs = ps.executeQuery();
 
-		ps.close();
+			Consumer consumer = toConsumerWithCars(rs);
 
-		return consumer;
+			return consumer;
+		}
 	}
 
 	Consumer toConsumerWithCars(ResultSet rs) throws SQLException {
@@ -47,7 +47,6 @@ public class ConsumerDAOimpl extends GenericDAO<Consumer> implements IconsumerDA
 		}
 
 		return consumer;
-
 	}
 
 	@Override
@@ -119,6 +118,5 @@ public class ConsumerDAOimpl extends GenericDAO<Consumer> implements IconsumerDA
 	String getDELETE() {
 		return DELETE;
 	}
-
 
 }

@@ -17,61 +17,61 @@ abstract class GenericDAO<T extends Model> implements ImodelDAO<T> {
 	@Override
 	public void create(T model) throws SQLException {
 
-		PreparedStatement ps = connection.prepareStatement(getCREATE());
-		fillPStatement(ps, model).executeUpdate();
+		try (PreparedStatement ps = connection.prepareStatement(getCREATE())) {
 
-		ps.close();
+			fillPStatement(ps, model).executeUpdate();
+
+		}
 	}
 
 	@Override
 	public T getById(long id) throws SQLException {
 
-		PreparedStatement ps = connection.prepareStatement(getGET_BY_ID());
-		ps.setLong(1, id);
+		try (PreparedStatement ps = connection.prepareStatement(getGET_BY_ID())) {
 
-		ResultSet rs = ps.executeQuery();
-		rs.next();
+			ps.setLong(1, id);
 
-		T model = toModel(rs);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
 
-		ps.close();
+			T model = toModel(rs);
 
-		return model;
+			return model;
+		}
 	}
 
 	@Override
 	public List<T> getAll() throws SQLException {
 
-		PreparedStatement ps = connection.prepareStatement(getGET_ALL());
-		ResultSet rs = ps.executeQuery();
+		try (PreparedStatement ps = connection.prepareStatement(getGET_ALL())) {
 
-		List<T> modelList = toList(rs);
+			ResultSet rs = ps.executeQuery();
 
-		ps.close();
+			List<T> modelList = toList(rs);
 
-		return modelList;
+			return modelList;
+		}
 	}
 
 	@Override
 	public void update(T model) throws SQLException {
 
-		PreparedStatement ps = connection.prepareStatement(getUPDATE());
-		ps = fillPStatement(ps, model);
-		ps = fillId(ps, model);
+		try (PreparedStatement ps = connection.prepareStatement(getUPDATE())) {
 
-		ps.executeUpdate();
+			fillId(fillPStatement(ps, model), model).executeUpdate();
 
-		ps.close();
+		}
 	}
 
 	@Override
 	public void delete(T model) throws SQLException {
 
-		PreparedStatement ps = connection.prepareStatement(getDELETE());
-		ps.setLong(1, model.getId());
-		ps.executeUpdate();
+		try (PreparedStatement ps = connection.prepareStatement(getDELETE())) {
 
-		ps.close();
+			ps.setLong(1, model.getId());
+			ps.executeUpdate();
+
+		}
 	}
 
 	abstract T toModel(ResultSet rs) throws SQLException;
