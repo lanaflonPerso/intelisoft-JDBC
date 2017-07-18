@@ -10,7 +10,7 @@ import com.intelisoft.dao.IcarDAO;
 import com.intelisoft.model.Car;
 import com.intelisoft.model.Consumer;
 
-public class CarDAOimpl extends GenericDAO<Car> implements IcarDAO {
+public class CarDAOimpl extends GenericDAOimpl<Car> implements IcarDAO {
 
 	private final String CREATE = "INSERT INTO car (maker, model, productionYear, color, engineType, odometer) VALUES ((?), (?), (?), (?), (?), (?))";
 	private final String GET_BY_ID = "SELECT * FROM car WHERE id = (?)";

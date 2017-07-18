@@ -10,7 +10,7 @@ import com.intelisoft.dao.IconsumerDAO;
 import com.intelisoft.model.Car;
 import com.intelisoft.model.Consumer;
 
-public class ConsumerDAOimpl extends GenericDAO<Consumer> implements IconsumerDAO {
+public class ConsumerDAOimpl extends GenericDAOimpl<Consumer> implements IconsumerDAO {
 
 	private final String CREATE = "INSERT INTO consumer (firstName, lastName, birthDate, country, city) VALUES ((?), (?), (?), (?), (?))";
 	private final String GET_BY_ID = "SELECT * FROM consumer WHERE id = (?)";

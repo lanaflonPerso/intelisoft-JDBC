@@ -63,7 +63,7 @@ public final class ConnectorDB {
 	private Properties getDataBaseProperties() {
 
 		Properties properties = new Properties();
-		try (FileInputStream fis = new FileInputStream("src/main/resources/DB_Config.properties")) {
+		try (FileInputStream fis = new FileInputStream("DB_Config.properties")) {
 			properties.load(fis);
 		} catch (IOException e) {
 			e.printStackTrace();

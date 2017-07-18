@@ -10,7 +10,7 @@ import com.intelisoft.dao.ImodelDAO;
 import com.intelisoft.model.Model;
 import com.intelisoft.util.ConnectorDB;
 
-abstract class GenericDAO<T extends Model> implements ImodelDAO<T> {
+abstract class GenericDAOimpl<T extends Model> implements ImodelDAO<T> {
 
 	Connection connection = ConnectorDB.getConnectorDBInstance().getConnection();
 
