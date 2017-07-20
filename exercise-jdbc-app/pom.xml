@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.intelisoft.exercise-jdbc</groupId>
+		<artifactId>exercise-jdbc-core</artifactId>
+		<version>1.0</version>
+	</parent>
+	<artifactId>exercise-jdbc-app</artifactId>
+	<packaging>jar</packaging>
+
+	<properties>
+		<java-version>1.7</java-version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.intelisoft.exercise-jdbc</groupId>
+			<artifactId>exercise-jdbc-service</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>libs/</classpathPrefix>
+							<mainClass>com.intelisoft.app.Application</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/libs</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+				<version>2.5.1</version>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>
