@@ -7,7 +7,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import org.apache.log4j.Logger;
+
 public final class ConnectorDB {
+
+	private static final Logger log = Logger.getLogger(ConnectorDB.class);
 
 	private static ConnectorDB connectorDB;
 
@@ -45,7 +49,7 @@ public final class ConnectorDB {
 			jdbcConnection.setAutoCommit(false);
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 
 	}
@@ -53,9 +57,11 @@ public final class ConnectorDB {
 	public void closeConnection() {
 
 		try {
+
 			jdbcConnection.close();
+
 		} catch (SQLException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 
 	}
@@ -63,10 +69,13 @@ public final class ConnectorDB {
 	private Properties getDataBaseProperties() {
 
 		Properties properties = new Properties();
-		try (FileInputStream fis = new FileInputStream("DB_Config.properties")) {
+
+		try (FileInputStream fis = new FileInputStream("classes/DB_Config.properties")) {
+
 			properties.load(fis);
+
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error(e.getMessage(), e);
 		}
 
 		return properties;

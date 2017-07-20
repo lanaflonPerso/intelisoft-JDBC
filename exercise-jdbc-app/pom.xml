@@ -14,15 +14,15 @@
 	</properties>
 
 	<dependencies>
-	
+
 		<dependency>
 			<groupId>com.intelisoft.exercise-jdbc</groupId>
 			<artifactId>exercise-jdbc-service</artifactId>
 			<version>1.0</version>
 		</dependency>
-		
+
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -40,7 +40,7 @@
 					</archive>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -58,8 +58,8 @@
 				</executions>
 				<version>2.5.1</version>
 			</plugin>
-			
+
 		</plugins>
 	</build>
-	
+
 </project>

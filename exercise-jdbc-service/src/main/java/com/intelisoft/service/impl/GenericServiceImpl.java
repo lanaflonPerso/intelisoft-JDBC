@@ -4,12 +4,16 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.intelisoft.dao.ImodelDAO;
 import com.intelisoft.model.Model;
 import com.intelisoft.service.ImodelService;
 import com.intelisoft.util.ConnectorDB;
 
 abstract class GenericServiceImpl<T extends Model> implements ImodelService<T> {
+
+	private static final Logger log = Logger.getLogger(GenericServiceImpl.class);
 
 	Connection connection = ConnectorDB.getConnectorDBInstance().getConnection();
 
@@ -23,13 +27,13 @@ abstract class GenericServiceImpl<T extends Model> implements ImodelService<T> {
 
 		} catch (SQLException e) {
 
+			log.error(e.getMessage(), e);
+
 			try {
 				connection.rollback();
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				log.error(e1.getMessage(), e1);
 			}
-			e.printStackTrace();
-
 		}
 	}
 
@@ -45,13 +49,13 @@ abstract class GenericServiceImpl<T extends Model> implements ImodelService<T> {
 
 		} catch (SQLException e) {
 
+			log.error(e.getMessage(), e);
+
 			try {
 				connection.rollback();
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				log.error(e1.getMessage(), e1);
 			}
-			e.printStackTrace();
-
 		}
 		return model;
 	}
@@ -68,13 +72,13 @@ abstract class GenericServiceImpl<T extends Model> implements ImodelService<T> {
 
 		} catch (SQLException e) {
 
+			log.error(e.getMessage(), e);
+
 			try {
 				connection.rollback();
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				log.error(e1.getMessage(), e1);
 			}
-			e.printStackTrace();
-
 		}
 		return modelList;
 	}
@@ -89,13 +93,13 @@ abstract class GenericServiceImpl<T extends Model> implements ImodelService<T> {
 
 		} catch (SQLException e) {
 
+			log.error(e.getMessage(), e);
+
 			try {
 				connection.rollback();
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				log.error(e1.getMessage(), e1);
 			}
-			e.printStackTrace();
-
 		}
 	}
 
@@ -109,13 +113,13 @@ abstract class GenericServiceImpl<T extends Model> implements ImodelService<T> {
 
 		} catch (SQLException e) {
 
+			log.error(e.getMessage(), e);
+
 			try {
 				connection.rollback();
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				log.error(e1.getMessage(), e1);
 			}
-			e.printStackTrace();
-
 		}
 	}
 

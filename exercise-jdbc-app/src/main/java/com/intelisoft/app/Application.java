@@ -1,6 +1,6 @@
 package com.intelisoft.app;
 
-import java.sql.SQLException;
+import org.apache.log4j.Logger;
 
 import com.intelisoft.model.Car;
 import com.intelisoft.model.Consumer;
@@ -11,99 +11,76 @@ import com.intelisoft.service.impl.ConsumerServiceImpl;
 
 public class Application {
 
+	private static final Logger log = Logger.getLogger(Application.class);
+
 	static IcarService carService = new CarServiceImpl();
 	static IconsumerService consumerService = new ConsumerServiceImpl();
 
-	static long id = 1;
-
-	static String divider = "-----------------------------------------------\n";
+	static long id = 7;
 
 	public static void main(String[] args) {
 
-		System.out.println("[START]\n");
+		update();
 
-		try {
+		getById();
 
-			update();
+		create();
 
-			getById();
+		getAll();
 
-			create();
-
-			getAll();
-
-			getByIdWith();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		System.out.println("[END]");
+		getByIdWith();
 	}
 
-	public static void create() throws SQLException {
+	public static void create() {
 
-		System.out.println("CREATE" + divider);
+		log.info("CREATE");
 		carService.create(carService.getByIdWithConsumer(id));
-
-		System.out.println(divider);
 
 		consumerService.create(consumerService.getById(id));
 	}
 
-	public static void getById() throws SQLException {
+	public static void getById() {
 
-		System.out.println("GET_BY_ID" + divider);
-		System.out.println(carService.getById(id));
+		log.info("GET_BY_ID");
+		log.info(carService.getById(id));
 
-		System.out.println(divider);
-
-		System.out.println(consumerService.getById(id));
+		log.info(consumerService.getById(id));
 
 	}
 
-	public static void update() throws SQLException {
+	public static void update() {
 
-		System.out.println("UPDATE" + divider);
+		log.info("UPDATE");
 		Car car = carService.getById(id);
 
-		System.out.println(car);
+		log.info(car);
 
 		car.setEngineType("ELECTRO");
 		carService.update(car);
 
-		System.out.println(divider);
-
 		Consumer consumer = consumerService.getById(id);
 
-		System.out.println(consumer);
+		log.info(consumer);
 
 		consumer.setLastName("ПУТИН");
 		consumerService.update(consumer);
 
 	}
 
-	public static void getAll() throws SQLException {
+	public static void getAll() {
 
-		System.out.println("GET_ALL" + divider);
-		System.out.println(carService.getAll());
+		log.info("GET_ALL");
+		log.info(carService.getAll());
 
-		System.out.println(divider);
-
-		System.out.println(consumerService.getAll());
+		log.info(consumerService.getAll());
 
 	}
 
-	public static void getByIdWith() throws SQLException {
+	public static void getByIdWith() {
 
-		System.out.println("GET_BY_ID_WITH" + divider);
-		System.out.println(carService.getByIdWithConsumer(id));
+		log.info("GET_BY_ID_WITH");
+		log.info(carService.getByIdWithConsumer(id));
 
-		System.out.println(divider);
-
-		System.out.println(consumerService.getByIdWithCars(id));
-
-		System.out.println(divider);
-
+		log.info(consumerService.getByIdWithCars(id));
 	}
 }
