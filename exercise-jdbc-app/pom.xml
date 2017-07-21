@@ -9,10 +9,6 @@
 	<artifactId>exercise-jdbc-app</artifactId>
 	<packaging>jar</packaging>
 
-	<properties>
-		<java-version>1.7</java-version>
-	</properties>
-
 	<dependencies>
 
 		<dependency>

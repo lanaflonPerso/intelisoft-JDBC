@@ -9,8 +9,4 @@
 	<artifactId>exercise-jdbc-model</artifactId>
 	<packaging>jar</packaging>
 
-	<properties>
-		<java-version>1.7</java-version>
-	</properties>
-
 </project>
