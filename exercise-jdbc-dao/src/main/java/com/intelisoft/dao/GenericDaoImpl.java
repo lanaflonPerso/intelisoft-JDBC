@@ -11,10 +11,16 @@ import com.intelisoft.model.Model;
 
 abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 
+	String CREATE;
+	String GET_BY_ID;
+	String GET_ALL;
+	String UPDATE;
+	String DELETE;
+
 	@Override
 	public void create(T model, Connection connection) throws SQLException {
 
-		try (PreparedStatement ps = connection.prepareStatement(getCREATE())) {
+		try (PreparedStatement ps = connection.prepareStatement(CREATE)) {
 
 			fillPStatement(ps, model, false).executeUpdate();
 
@@ -24,7 +30,7 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 	@Override
 	public T getById(long id, Connection connection) throws SQLException {
 
-		try (PreparedStatement ps = connection.prepareStatement(getGET_BY_ID())) {
+		try (PreparedStatement ps = connection.prepareStatement(GET_BY_ID)) {
 
 			ps.setLong(1, id);
 
@@ -40,7 +46,7 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 	@Override
 	public List<T> getAll(Connection connection) throws SQLException {
 
-		try (PreparedStatement ps = connection.prepareStatement(getGET_ALL())) {
+		try (PreparedStatement ps = connection.prepareStatement(GET_ALL)) {
 
 			ResultSet rs = ps.executeQuery();
 
@@ -53,7 +59,7 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 	@Override
 	public void update(T model, Connection connection) throws SQLException {
 
-		try (PreparedStatement ps = connection.prepareStatement(getUPDATE())) {
+		try (PreparedStatement ps = connection.prepareStatement(UPDATE)) {
 
 			fillPStatement(ps, model, true).executeUpdate();
 
@@ -63,7 +69,7 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 	@Override
 	public void delete(T model, Connection connection) throws SQLException {
 
-		try (PreparedStatement ps = connection.prepareStatement(getDELETE())) {
+		try (PreparedStatement ps = connection.prepareStatement(DELETE)) {
 
 			ps.setLong(1, model.getId());
 			ps.executeUpdate();
@@ -76,15 +82,4 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 	abstract PreparedStatement fillPStatement(PreparedStatement ps, T model, boolean isUpdate) throws SQLException;
 
 	abstract List<T> toList(ResultSet rs) throws SQLException;
-
-	abstract String getCREATE();
-
-	abstract String getGET_BY_ID();
-
-	abstract String getGET_ALL();
-
-	abstract String getUPDATE();
-
-	abstract String getDELETE();
-
 }

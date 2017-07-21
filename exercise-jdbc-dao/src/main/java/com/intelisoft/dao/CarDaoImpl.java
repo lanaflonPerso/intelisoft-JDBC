@@ -20,6 +20,14 @@ public class CarDaoImpl extends GenericDaoImpl<Car> implements ICarDao {
 	private final String DELETE = "DELETE FROM car WHERE id = (?)";
 	private final String CAR_GET_BY_ID_WITH_CONSUMER = "SELECT * FROM car LEFT OUTER JOIN consumer ON car.consumer_id = consumer.id WHERE car.id = (?)";
 
+	public CarDaoImpl() {
+		super.CREATE = CREATE;
+		super.GET_BY_ID = GET_BY_ID;
+		super.GET_ALL = GET_ALL;
+		super.UPDATE = UPDATE;
+		super.DELETE = DELETE;
+	}
+
 	@Override
 	public Car getByIdWithConsumer(long id, Connection connection) throws SQLException {
 
@@ -89,30 +97,4 @@ public class CarDaoImpl extends GenericDaoImpl<Car> implements ICarDao {
 
 		return carList;
 	}
-
-	@Override
-	String getCREATE() {
-		return CREATE;
-	}
-
-	@Override
-	String getGET_BY_ID() {
-		return GET_BY_ID;
-	}
-
-	@Override
-	String getGET_ALL() {
-		return GET_ALL;
-	}
-
-	@Override
-	String getUPDATE() {
-		return UPDATE;
-	}
-
-	@Override
-	String getDELETE() {
-		return DELETE;
-	}
-
 }

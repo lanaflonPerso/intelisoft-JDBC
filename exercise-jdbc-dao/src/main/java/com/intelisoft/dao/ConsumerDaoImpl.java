@@ -20,6 +20,14 @@ public class ConsumerDaoImpl extends GenericDaoImpl<Consumer> implements IConsum
 	private final String DELETE = "DELETE FROM consumer WHERE id = (?)";
 	private final String CONSUMER_GET_BY_ID_WITH_CAR = "SELECT * FROM consumer LEFT OUTER JOIN car ON car.consumer_id = consumer.id WHERE consumer.id = (?)";
 
+	public ConsumerDaoImpl() {
+		super.CREATE = CREATE;
+		super.GET_BY_ID = GET_BY_ID;
+		super.GET_ALL = GET_ALL;
+		super.UPDATE = UPDATE;
+		super.DELETE = DELETE;
+	}
+
 	@Override
 	public Consumer getByIdWithCars(long id, Connection connection) throws SQLException {
 
@@ -92,30 +100,4 @@ public class ConsumerDaoImpl extends GenericDaoImpl<Consumer> implements IConsum
 
 		return consumerList;
 	}
-
-	@Override
-	String getCREATE() {
-		return CREATE;
-	}
-
-	@Override
-	String getGET_BY_ID() {
-		return GET_BY_ID;
-	}
-
-	@Override
-	String getGET_ALL() {
-		return GET_ALL;
-	}
-
-	@Override
-	String getUPDATE() {
-		return UPDATE;
-	}
-
-	@Override
-	String getDELETE() {
-		return DELETE;
-	}
-
 }
