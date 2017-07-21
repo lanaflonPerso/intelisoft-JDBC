@@ -1,4 +1,4 @@
-package com.intelisoft.dao.mysql_impl;
+package com.intelisoft.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,11 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.intelisoft.dao.ImodelDAO;
+import com.intelisoft.dao.IModelDao;
 import com.intelisoft.model.Model;
 import com.intelisoft.util.ConnectorDB;
 
-abstract class GenericDAOimpl<T extends Model> implements ImodelDAO<T> {
+abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 
 	Connection connection = ConnectorDB.getConnectorDBInstance().getConnection();
 

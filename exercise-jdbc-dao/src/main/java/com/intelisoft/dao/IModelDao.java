@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.intelisoft.model.Model;
 
-public interface ImodelDAO<T extends Model> {
+public interface IModelDao<T extends Model> {
 
 	public void create(T model) throws SQLException;
 

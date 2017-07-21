@@ -1,4 +1,4 @@
-package com.intelisoft.dao.mysql_impl;
+package com.intelisoft.dao.impl;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -6,11 +6,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.intelisoft.dao.IconsumerDAO;
+import com.intelisoft.dao.IConsumerDao;
 import com.intelisoft.model.Car;
 import com.intelisoft.model.Consumer;
 
-public class ConsumerDAOimpl extends GenericDAOimpl<Consumer> implements IconsumerDAO {
+public class ConsumerDaoImpl extends GenericDaoImpl<Consumer> implements IConsumerDao {
 
 	private final String CREATE = "INSERT INTO consumer (firstName, lastName, birthDate, country, city) VALUES ((?), (?), (?), (?), (?))";
 	private final String GET_BY_ID = "SELECT * FROM consumer WHERE id = (?)";
@@ -40,7 +40,7 @@ public class ConsumerDAOimpl extends GenericDAOimpl<Consumer> implements Iconsum
 		if (rs.getString("maker") != null) {
 			List<Car> carList = new ArrayList<>();
 			do {
-				Car car = new CarDAOimpl().toModel(rs);
+				Car car = new CarDaoImpl().toModel(rs);
 				carList.add(car);
 			} while (rs.next());
 			consumer.setCarList(carList);

@@ -1,4 +1,4 @@
-package com.intelisoft.dao.mysql_impl;
+package com.intelisoft.dao.impl;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -6,11 +6,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.intelisoft.dao.IcarDAO;
+import com.intelisoft.dao.ICarDao;
 import com.intelisoft.model.Car;
 import com.intelisoft.model.Consumer;
 
-public class CarDAOimpl extends GenericDAOimpl<Car> implements IcarDAO {
+public class CarDaoImpl extends GenericDaoImpl<Car> implements ICarDao {
 
 	private final String CREATE = "INSERT INTO car (maker, model, productionYear, color, engineType, odometer) VALUES ((?), (?), (?), (?), (?), (?))";
 	private final String GET_BY_ID = "SELECT * FROM car WHERE id = (?)";
@@ -37,7 +37,7 @@ public class CarDAOimpl extends GenericDAOimpl<Car> implements IcarDAO {
 
 		rs.next();
 		Car car = toModel(rs);
-		Consumer consumer = new ConsumerDAOimpl().toModel(rs);
+		Consumer consumer = new ConsumerDaoImpl().toModel(rs);
 		car.setConsumer(consumer);
 
 		return car;

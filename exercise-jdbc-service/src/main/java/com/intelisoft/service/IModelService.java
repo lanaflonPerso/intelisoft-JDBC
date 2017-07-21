@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.intelisoft.model.Model;
 
-public interface ImodelService<T extends Model> {
+public interface IModelService<T extends Model> {
 
 	public void create(T model);
 

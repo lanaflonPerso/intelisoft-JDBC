@@ -4,17 +4,17 @@ import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 
-import com.intelisoft.dao.IcarDAO;
-import com.intelisoft.dao.ImodelDAO;
-import com.intelisoft.dao.mysql_impl.CarDAOimpl;
+import com.intelisoft.dao.ICarDao;
+import com.intelisoft.dao.IModelDao;
+import com.intelisoft.dao.impl.CarDaoImpl;
 import com.intelisoft.model.Car;
-import com.intelisoft.service.IcarService;
+import com.intelisoft.service.ICarService;
 
-public class CarServiceImpl extends GenericServiceImpl<Car> implements IcarService {
+public class CarServiceImpl extends GenericServiceImpl<Car> implements ICarService {
 
 	private static final Logger log = Logger.getLogger(CarServiceImpl.class);
 
-	private IcarDAO dao = new CarDAOimpl();
+	private ICarDao dao = new CarDaoImpl();
 
 	@Override
 	public Car getByIdWithConsumer(long id) {
@@ -40,7 +40,7 @@ public class CarServiceImpl extends GenericServiceImpl<Car> implements IcarServi
 	}
 
 	@Override
-	ImodelDAO<Car> getDAO() {
+	IModelDao<Car> getDAO() {
 		return dao;
 	}
 

@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import com.intelisoft.model.Consumer;
 
-public interface IconsumerDAO extends ImodelDAO<Consumer> {
+public interface IConsumerDao extends IModelDao<Consumer> {
 
 	public Consumer getByIdWithCars(long id) throws SQLException;
 

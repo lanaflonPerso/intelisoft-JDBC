@@ -6,12 +6,12 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.intelisoft.dao.ImodelDAO;
+import com.intelisoft.dao.IModelDao;
 import com.intelisoft.model.Model;
-import com.intelisoft.service.ImodelService;
+import com.intelisoft.service.IModelService;
 import com.intelisoft.util.ConnectorDB;
 
-abstract class GenericServiceImpl<T extends Model> implements ImodelService<T> {
+abstract class GenericServiceImpl<T extends Model> implements IModelService<T> {
 
 	private static final Logger log = Logger.getLogger(GenericServiceImpl.class);
 
@@ -123,5 +123,5 @@ abstract class GenericServiceImpl<T extends Model> implements ImodelService<T> {
 		}
 	}
 
-	abstract ImodelDAO<T> getDAO();
+	abstract IModelDao<T> getDAO();
 }
