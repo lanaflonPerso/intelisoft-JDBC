@@ -53,7 +53,7 @@ public class CarDaoImpl extends GenericDaoImpl<Car> implements ICarDao {
 
 		Car car = new Car();
 
-		car.setId(rs.getLong("id"));
+		car.setId(rs.getLong("car.id"));
 		car.setMaker(rs.getString("maker"));
 		car.setModel(rs.getString("model"));
 		car.setProductionYear(rs.getInt("productionYear"));

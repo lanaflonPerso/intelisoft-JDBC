@@ -58,7 +58,7 @@ public class ConsumerDaoImpl extends GenericDaoImpl<Consumer> implements IConsum
 
 		Consumer consumer = new Consumer();
 
-		consumer.setId(rs.getLong("id"));
+		consumer.setId(rs.getLong("consumer.id"));
 		consumer.setFirstName(rs.getString("firstName"));
 		consumer.setLastName(rs.getString("lastName"));
 		consumer.setBirthDate(rs.getDate("birthDate"));
