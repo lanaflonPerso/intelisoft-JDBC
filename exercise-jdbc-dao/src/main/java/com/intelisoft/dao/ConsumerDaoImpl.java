@@ -13,19 +13,14 @@ import com.intelisoft.model.Consumer;
 
 public class ConsumerDaoImpl extends GenericDaoImpl<Consumer> implements IConsumerDao {
 
-	private final String CREATE = "INSERT INTO consumer (firstName, lastName, birthDate, country, city) VALUES ((?), (?), (?), (?), (?))";
-	private final String GET_BY_ID = "SELECT * FROM consumer WHERE id = (?)";
-	private final String GET_ALL = "SELECT * FROM consumer";
-	private final String UPDATE = "UPDATE consumer SET firstName = (?), lastName = (?), birthDate = (?), country = (?), city =(?) WHERE id = (?)";
-	private final String DELETE = "DELETE FROM consumer WHERE id = (?)";
-	private final String CONSUMER_GET_BY_ID_WITH_CAR = "SELECT * FROM consumer LEFT OUTER JOIN car ON car.consumer_id = consumer.id WHERE consumer.id = (?)";
+	final String CONSUMER_GET_BY_ID_WITH_CAR = "SELECT * FROM consumer LEFT OUTER JOIN car ON car.consumer_id = consumer.id WHERE consumer.id = (?)";
 
 	public ConsumerDaoImpl() {
-		super.CREATE = CREATE;
-		super.GET_BY_ID = GET_BY_ID;
-		super.GET_ALL = GET_ALL;
-		super.UPDATE = UPDATE;
-		super.DELETE = DELETE;
+		super.CREATE = "INSERT INTO consumer (firstName, lastName, birthDate, country, city) VALUES ((?), (?), (?), (?), (?))";
+		super.GET_BY_ID = "SELECT * FROM consumer WHERE id = (?)";
+		super.GET_ALL = "SELECT * FROM consumer";
+		super.UPDATE = "UPDATE consumer SET firstName = (?), lastName = (?), birthDate = (?), country = (?), city =(?) WHERE id = (?)";
+		super.DELETE = "DELETE FROM consumer WHERE id = (?)";
 	}
 
 	@Override

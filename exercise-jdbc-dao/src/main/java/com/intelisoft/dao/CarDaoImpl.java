@@ -13,19 +13,14 @@ import com.intelisoft.model.Consumer;
 
 public class CarDaoImpl extends GenericDaoImpl<Car> implements ICarDao {
 
-	private final String CREATE = "INSERT INTO car (maker, model, productionYear, color, engineType, odometer) VALUES ((?), (?), (?), (?), (?), (?))";
-	private final String GET_BY_ID = "SELECT * FROM car WHERE id = (?)";
-	private final String GET_ALL = "SELECT * FROM car";
-	private final String UPDATE = "UPDATE car SET maker = (?), model = (?), productionYear = (?), color = (?), engineType = (?), odometer = (?) WHERE id = (?)";
-	private final String DELETE = "DELETE FROM car WHERE id = (?)";
 	private final String CAR_GET_BY_ID_WITH_CONSUMER = "SELECT * FROM car LEFT OUTER JOIN consumer ON car.consumer_id = consumer.id WHERE car.id = (?)";
 
 	public CarDaoImpl() {
-		super.CREATE = CREATE;
-		super.GET_BY_ID = GET_BY_ID;
-		super.GET_ALL = GET_ALL;
-		super.UPDATE = UPDATE;
-		super.DELETE = DELETE;
+		super.CREATE = "INSERT INTO car (maker, model, productionYear, color, engineType, odometer) VALUES ((?), (?), (?), (?), (?), (?))";
+		super.GET_BY_ID = "SELECT * FROM car WHERE id = (?)";
+		super.GET_ALL = "SELECT * FROM car";
+		super.UPDATE = "UPDATE car SET maker = (?), model = (?), productionYear = (?), color = (?), engineType = (?), odometer = (?) WHERE id = (?)";
+		super.DELETE = "DELETE FROM car WHERE id = (?)";
 	}
 
 	@Override
