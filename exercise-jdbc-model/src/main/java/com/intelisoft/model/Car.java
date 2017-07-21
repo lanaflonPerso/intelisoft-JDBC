@@ -76,7 +76,9 @@ public final class Car extends Model {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Car [maker=");
+		builder.append("Car [id=");
+		builder.append(id);
+		builder.append(", maker=");
 		builder.append(maker);
 		builder.append(", model=");
 		builder.append(model);

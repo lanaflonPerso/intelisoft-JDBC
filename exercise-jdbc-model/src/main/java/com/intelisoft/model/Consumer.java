@@ -82,7 +82,9 @@ public final class Consumer extends Model {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Consumer [firstName=");
+		builder.append("Consumer [id=");
+		builder.append(id);
+		builder.append(", firstName=");
 		builder.append(firstName);
 		builder.append(", lastName=");
 		builder.append(lastName);
