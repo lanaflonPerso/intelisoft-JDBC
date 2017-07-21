@@ -8,14 +8,11 @@ import java.util.List;
 
 import com.intelisoft.dao.IModelDao;
 import com.intelisoft.model.Model;
-import com.intelisoft.util.ConnectorDB;
 
 abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 
-	Connection connection = ConnectorDB.getConnectorDBInstance().getConnection();
-
 	@Override
-	public void create(T model) throws SQLException {
+	public void create(T model, Connection connection) throws SQLException {
 
 		try (PreparedStatement ps = connection.prepareStatement(getCREATE())) {
 
@@ -25,7 +22,7 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 	}
 
 	@Override
-	public T getById(long id) throws SQLException {
+	public T getById(long id, Connection connection) throws SQLException {
 
 		try (PreparedStatement ps = connection.prepareStatement(getGET_BY_ID())) {
 
@@ -41,7 +38,7 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 	}
 
 	@Override
-	public List<T> getAll() throws SQLException {
+	public List<T> getAll(Connection connection) throws SQLException {
 
 		try (PreparedStatement ps = connection.prepareStatement(getGET_ALL())) {
 
@@ -54,7 +51,7 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 	}
 
 	@Override
-	public void update(T model) throws SQLException {
+	public void update(T model, Connection connection) throws SQLException {
 
 		try (PreparedStatement ps = connection.prepareStatement(getUPDATE())) {
 
@@ -64,7 +61,7 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 	}
 
 	@Override
-	public void delete(T model) throws SQLException {
+	public void delete(T model, Connection connection) throws SQLException {
 
 		try (PreparedStatement ps = connection.prepareStatement(getDELETE())) {
 

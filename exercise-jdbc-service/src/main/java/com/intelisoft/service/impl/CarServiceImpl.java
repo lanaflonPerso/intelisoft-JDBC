@@ -23,7 +23,7 @@ public class CarServiceImpl extends GenericServiceImpl<Car> implements ICarServi
 
 		try {
 
-			model = dao.getByIdWithConsumer(id);
+			model = dao.getByIdWithConsumer(id, connection);
 			connection.commit();
 
 		} catch (SQLException e) {

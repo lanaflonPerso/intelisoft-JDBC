@@ -23,7 +23,7 @@ public class ConsumerServiceImpl extends GenericServiceImpl<Consumer> implements
 
 		try {
 
-			model = dao.getByIdWithCars(id);
+			model = dao.getByIdWithCars(id, connection);
 			connection.commit();
 
 		} catch (SQLException e) {

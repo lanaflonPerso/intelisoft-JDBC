@@ -22,7 +22,7 @@ abstract class GenericServiceImpl<T extends Model> implements IModelService<T> {
 
 		try {
 			
-			getDAO().create(model);
+			getDAO().create(model, connection);
 			connection.commit();
 
 		} catch (SQLException e) {
@@ -44,7 +44,7 @@ abstract class GenericServiceImpl<T extends Model> implements IModelService<T> {
 
 		try {
 
-			model = getDAO().getById(id);
+			model = getDAO().getById(id, connection);
 			connection.commit();
 
 		} catch (SQLException e) {
@@ -67,7 +67,7 @@ abstract class GenericServiceImpl<T extends Model> implements IModelService<T> {
 
 		try {
 
-			modelList = getDAO().getAll();
+			modelList = getDAO().getAll(connection);
 			connection.commit();
 
 		} catch (SQLException e) {
@@ -88,7 +88,7 @@ abstract class GenericServiceImpl<T extends Model> implements IModelService<T> {
 
 		try {
 
-			getDAO().update(model);
+			getDAO().update(model, connection);
 			connection.commit();
 
 		} catch (SQLException e) {
@@ -108,7 +108,7 @@ abstract class GenericServiceImpl<T extends Model> implements IModelService<T> {
 
 		try {
 
-			getDAO().delete(model);
+			getDAO().delete(model, connection);
 			connection.commit();
 
 		} catch (SQLException e) {

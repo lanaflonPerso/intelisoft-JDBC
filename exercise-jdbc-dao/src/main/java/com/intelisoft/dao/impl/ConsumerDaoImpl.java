@@ -1,5 +1,6 @@
 package com.intelisoft.dao.impl;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ public class ConsumerDaoImpl extends GenericDaoImpl<Consumer> implements IConsum
 	private final String CONSUMER_GET_BY_ID_WITH_CAR = "SELECT * FROM consumer LEFT OUTER JOIN car ON car.consumer_id = consumer.id WHERE consumer.id = (?)";
 
 	@Override
-	public Consumer getByIdWithCars(long id) throws SQLException {
+	public Consumer getByIdWithCars(long id, Connection connection) throws SQLException {
 
 		try (PreparedStatement ps = connection.prepareStatement(CONSUMER_GET_BY_ID_WITH_CAR)) {
 
