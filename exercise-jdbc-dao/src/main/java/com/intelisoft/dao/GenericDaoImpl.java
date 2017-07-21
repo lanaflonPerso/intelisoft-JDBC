@@ -1,4 +1,4 @@
-package com.intelisoft.dao.impl;
+package com.intelisoft.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.intelisoft.dao.IModelDao;
+import com.intelisoft.api.dao.IModelDao;
 import com.intelisoft.model.Model;
 
 abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {

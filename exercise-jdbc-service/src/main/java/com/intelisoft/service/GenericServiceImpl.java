@@ -1,4 +1,4 @@
-package com.intelisoft.service.impl;
+package com.intelisoft.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -6,9 +6,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.intelisoft.dao.IModelDao;
+import com.intelisoft.api.dao.IModelDao;
+import com.intelisoft.api.service.IModelService;
 import com.intelisoft.model.Model;
-import com.intelisoft.service.IModelService;
 import com.intelisoft.util.ConnectorDB;
 
 abstract class GenericServiceImpl<T extends Model> implements IModelService<T> {

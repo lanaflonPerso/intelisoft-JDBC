@@ -2,12 +2,12 @@ package com.intelisoft.app;
 
 import org.apache.log4j.Logger;
 
+import com.intelisoft.api.service.ICarService;
+import com.intelisoft.api.service.IConsumerService;
 import com.intelisoft.model.Car;
 import com.intelisoft.model.Consumer;
-import com.intelisoft.service.ICarService;
-import com.intelisoft.service.IConsumerService;
-import com.intelisoft.service.impl.CarServiceImpl;
-import com.intelisoft.service.impl.ConsumerServiceImpl;
+import com.intelisoft.service.CarServiceImpl;
+import com.intelisoft.service.ConsumerServiceImpl;
 
 public class Application {
 

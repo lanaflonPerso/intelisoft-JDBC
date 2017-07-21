@@ -7,6 +7,7 @@
 	<version>1.0</version>
 
 	<modules>
+		<module>exercise-jdbc-api</module>
 		<module>exercise-jdbc-dao</module>
 		<module>exercise-jdbc-util</module>
 		<module>exercise-jdbc-service</module>

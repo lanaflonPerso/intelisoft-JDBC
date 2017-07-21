@@ -1,4 +1,4 @@
-package com.intelisoft.dao;
+package com.intelisoft.api.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;

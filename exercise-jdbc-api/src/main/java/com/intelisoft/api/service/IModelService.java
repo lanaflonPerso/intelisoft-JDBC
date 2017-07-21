@@ -1,4 +1,4 @@
-package com.intelisoft.service;
+package com.intelisoft.api.service;
 
 import java.util.List;
 

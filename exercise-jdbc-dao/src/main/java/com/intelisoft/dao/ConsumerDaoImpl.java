@@ -1,4 +1,4 @@
-package com.intelisoft.dao.impl;
+package com.intelisoft.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.intelisoft.dao.IConsumerDao;
+import com.intelisoft.api.dao.IConsumerDao;
 import com.intelisoft.model.Car;
 import com.intelisoft.model.Consumer;
 

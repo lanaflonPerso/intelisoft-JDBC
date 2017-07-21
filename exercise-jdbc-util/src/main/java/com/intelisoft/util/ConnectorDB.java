@@ -70,7 +70,7 @@ public final class ConnectorDB {
 
 		Properties properties = new Properties();
 
-		try (FileInputStream fis = new FileInputStream("classes/DB_Config.properties")) {
+		try (FileInputStream fis = new FileInputStream("classes/jdbc.properties")) {
 
 			properties.load(fis);
 

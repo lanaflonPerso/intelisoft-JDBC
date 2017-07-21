@@ -1,14 +1,14 @@
-package com.intelisoft.service.impl;
+package com.intelisoft.service;
 
 import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 
-import com.intelisoft.dao.ICarDao;
-import com.intelisoft.dao.IModelDao;
-import com.intelisoft.dao.impl.CarDaoImpl;
+import com.intelisoft.api.dao.ICarDao;
+import com.intelisoft.api.dao.IModelDao;
+import com.intelisoft.api.service.ICarService;
+import com.intelisoft.dao.CarDaoImpl;
 import com.intelisoft.model.Car;
-import com.intelisoft.service.ICarService;
 
 public class CarServiceImpl extends GenericServiceImpl<Car> implements ICarService {
 

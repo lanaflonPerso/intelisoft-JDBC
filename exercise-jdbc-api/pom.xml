@@ -6,24 +6,13 @@
 		<artifactId>exercise-jdbc-core</artifactId>
 		<version>1.0</version>
 	</parent>
-	<artifactId>exercise-jdbc-service</artifactId>
-	<packaging>jar</packaging>
-
-	<properties>
-		<java-version>1.7</java-version>
-	</properties>
+	<artifactId>exercise-jdbc-api</artifactId>
 
 	<dependencies>
 
 		<dependency>
 			<groupId>com.intelisoft.exercise-jdbc</groupId>
-			<artifactId>exercise-jdbc-api</artifactId>
-			<version>1.0</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.intelisoft.exercise-jdbc</groupId>
-			<artifactId>exercise-jdbc-dao</artifactId>
+			<artifactId>exercise-jdbc-model</artifactId>
 			<version>1.0</version>
 		</dependency>
 

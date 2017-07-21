@@ -1,14 +1,14 @@
-package com.intelisoft.service.impl;
+package com.intelisoft.service;
 
 import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 
-import com.intelisoft.dao.IConsumerDao;
-import com.intelisoft.dao.IModelDao;
-import com.intelisoft.dao.impl.ConsumerDaoImpl;
+import com.intelisoft.api.dao.IConsumerDao;
+import com.intelisoft.api.dao.IModelDao;
+import com.intelisoft.api.service.IConsumerService;
+import com.intelisoft.dao.ConsumerDaoImpl;
 import com.intelisoft.model.Consumer;
-import com.intelisoft.service.IConsumerService;
 
 public class ConsumerServiceImpl extends GenericServiceImpl<Consumer> implements IConsumerService {
 

@@ -17,6 +17,12 @@
 
 		<dependency>
 			<groupId>com.intelisoft.exercise-jdbc</groupId>
+			<artifactId>exercise-jdbc-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.intelisoft.exercise-jdbc</groupId>
 			<artifactId>exercise-jdbc-service</artifactId>
 			<version>1.0</version>
 		</dependency>
