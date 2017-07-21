@@ -62,7 +62,7 @@ public class CarDaoImpl extends GenericDaoImpl<Car> implements ICarDao {
 	}
 
 	@Override
-	PreparedStatement fillPStatement(PreparedStatement ps, Car model) throws SQLException {
+	PreparedStatement fillPStatement(PreparedStatement ps, Car model, boolean isUpdate) throws SQLException {
 
 		ps.setString(1, model.getMaker());
 		ps.setString(2, model.getModel());
@@ -71,12 +71,10 @@ public class CarDaoImpl extends GenericDaoImpl<Car> implements ICarDao {
 		ps.setString(5, model.getEngineType());
 		ps.setInt(6, model.getOdometer());
 
-		return ps;
-	}
+		if (isUpdate) {
+			ps.setLong(7, model.getId());
+		}
 
-	@Override
-	PreparedStatement fillId(PreparedStatement ps, Car model) throws SQLException {
-		ps.setLong(7, model.getId());
 		return ps;
 	}
 

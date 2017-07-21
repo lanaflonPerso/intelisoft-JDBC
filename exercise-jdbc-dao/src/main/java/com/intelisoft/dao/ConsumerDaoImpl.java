@@ -66,7 +66,7 @@ public class ConsumerDaoImpl extends GenericDaoImpl<Consumer> implements IConsum
 	}
 
 	@Override
-	PreparedStatement fillPStatement(PreparedStatement ps, Consumer model) throws SQLException {
+	PreparedStatement fillPStatement(PreparedStatement ps, Consumer model, boolean isUpdate) throws SQLException {
 
 		ps.setString(1, model.getFirstName());
 		ps.setString(2, model.getLastName());
@@ -74,12 +74,10 @@ public class ConsumerDaoImpl extends GenericDaoImpl<Consumer> implements IConsum
 		ps.setString(4, model.getCountry());
 		ps.setString(5, model.getCity());
 
-		return ps;
-	}
+		if (isUpdate) {
+			ps.setLong(6, model.getId());
+		}
 
-	@Override
-	PreparedStatement fillId(PreparedStatement ps, Consumer model) throws SQLException {
-		ps.setLong(6, model.getId());
 		return ps;
 	}
 

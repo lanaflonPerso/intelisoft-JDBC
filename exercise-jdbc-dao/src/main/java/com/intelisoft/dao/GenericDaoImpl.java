@@ -16,7 +16,7 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 
 		try (PreparedStatement ps = connection.prepareStatement(getCREATE())) {
 
-			fillPStatement(ps, model).executeUpdate();
+			fillPStatement(ps, model, false).executeUpdate();
 
 		}
 	}
@@ -55,7 +55,7 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 
 		try (PreparedStatement ps = connection.prepareStatement(getUPDATE())) {
 
-			fillId(fillPStatement(ps, model), model).executeUpdate();
+			fillPStatement(ps, model, true).executeUpdate();
 
 		}
 	}
@@ -73,11 +73,9 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 
 	abstract T toModel(ResultSet rs) throws SQLException;
 
-	abstract PreparedStatement fillPStatement(PreparedStatement ps, T model) throws SQLException;
+	abstract PreparedStatement fillPStatement(PreparedStatement ps, T model, boolean isUpdate) throws SQLException;
 
 	abstract List<T> toList(ResultSet rs) throws SQLException;
-
-	abstract PreparedStatement fillId(PreparedStatement ps, T model) throws SQLException;
 
 	abstract String getCREATE();
 
