@@ -4,8 +4,8 @@ import org.apache.log4j.Logger;
 
 import com.intelisoft.model.Car;
 import com.intelisoft.model.Consumer;
-import com.intelisoft.service.IcarService;
-import com.intelisoft.service.IconsumerService;
+import com.intelisoft.service.ICarService;
+import com.intelisoft.service.IConsumerService;
 import com.intelisoft.service.impl.CarServiceImpl;
 import com.intelisoft.service.impl.ConsumerServiceImpl;
 
@@ -13,8 +13,8 @@ public class Application {
 
 	private static final Logger log = Logger.getLogger(Application.class);
 
-	static IcarService carService = new CarServiceImpl();
-	static IconsumerService consumerService = new ConsumerServiceImpl();
+	static ICarService carService = new CarServiceImpl();
+	static IConsumerService consumerService = new ConsumerServiceImpl();
 
 	static long id = 7;
 
