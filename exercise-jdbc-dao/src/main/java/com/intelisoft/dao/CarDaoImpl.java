@@ -39,7 +39,7 @@ public class CarDaoImpl extends GenericDaoImpl<Car> implements ICarDao {
 
 			return car;
 		} catch (SQLException e) {
-			log.warn("Exception at getByIdWithConsumer method");
+			log.warn("Exception at getByIdWithConsumer method.");
 			return null;
 		}
 	}
