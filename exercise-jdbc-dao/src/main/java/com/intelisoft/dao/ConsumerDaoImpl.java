@@ -7,13 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.intelisoft.api.dao.IConsumerDao;
 import com.intelisoft.model.Car;
 import com.intelisoft.model.Consumer;
 
 public class ConsumerDaoImpl extends GenericDaoImpl<Consumer> implements IConsumerDao {
 
-	final String CONSUMER_GET_BY_ID_WITH_CAR = "SELECT * FROM consumer LEFT OUTER JOIN car ON car.consumer_id = consumer.id WHERE consumer.id = (?)";
+	private static final Logger log = Logger.getLogger(ConsumerDaoImpl.class);
+
+	private final String CONSUMER_GET_BY_ID_WITH_CAR = "SELECT * FROM consumer LEFT OUTER JOIN car ON car.consumer_id = consumer.id WHERE consumer.id = (?)";
 
 	public ConsumerDaoImpl() {
 		super.CREATE = "INSERT INTO consumer (firstName, lastName, birthDate, country, city) VALUES ((?), (?), (?), (?), (?))";
@@ -34,6 +38,9 @@ public class ConsumerDaoImpl extends GenericDaoImpl<Consumer> implements IConsum
 			Consumer consumer = toConsumerWithCars(rs);
 
 			return consumer;
+		} catch (SQLException e) {
+			log.warn("Exception at getByIdWithCars method");
+			return null;
 		}
 	}
 

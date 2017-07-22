@@ -7,11 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.intelisoft.api.dao.ICarDao;
 import com.intelisoft.model.Car;
 import com.intelisoft.model.Consumer;
 
 public class CarDaoImpl extends GenericDaoImpl<Car> implements ICarDao {
+
+	private static final Logger log = Logger.getLogger(CarDaoImpl.class);
 
 	private final String CAR_GET_BY_ID_WITH_CONSUMER = "SELECT * FROM car LEFT OUTER JOIN consumer ON car.consumer_id = consumer.id WHERE car.id = (?)";
 
@@ -34,6 +38,9 @@ public class CarDaoImpl extends GenericDaoImpl<Car> implements ICarDao {
 			Car car = toCarWithConsumer(rs);
 
 			return car;
+		} catch (SQLException e) {
+			log.warn("Exception at getByIdWithConsumer method");
+			return null;
 		}
 	}
 

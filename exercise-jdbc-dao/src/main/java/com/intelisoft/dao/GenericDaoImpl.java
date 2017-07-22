@@ -6,10 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.intelisoft.api.dao.IModelDao;
 import com.intelisoft.model.Model;
 
 abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
+
+	private static final Logger log = Logger.getLogger(GenericDaoImpl.class);
 
 	String CREATE;
 	String GET_BY_ID;
@@ -24,6 +28,8 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 
 			fillPStatement(ps, model, false).executeUpdate();
 
+		} catch (SQLException e) {
+			log.warn("Exceplion at create method");
 		}
 	}
 
@@ -40,6 +46,10 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 			T model = toModel(rs);
 
 			return model;
+
+		} catch (SQLException e) {
+			log.warn("Exception at getById method");
+			return null;
 		}
 	}
 
@@ -53,6 +63,9 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 			List<T> modelList = toList(rs);
 
 			return modelList;
+		} catch (SQLException e) {
+			log.warn("Exception at getAll method");
+			return null;
 		}
 	}
 
@@ -63,6 +76,8 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 
 			fillPStatement(ps, model, true).executeUpdate();
 
+		} catch (SQLException e) {
+			log.warn("Exception at update method");
 		}
 	}
 
@@ -74,6 +89,8 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 			ps.setLong(1, model.getId());
 			ps.executeUpdate();
 
+		} catch (SQLException e) {
+			log.warn("Exception at delete method");
 		}
 	}
 
