@@ -39,7 +39,7 @@ public class ConsumerDaoImpl extends GenericDaoImpl<Consumer> implements IConsum
 
 			return consumer;
 		} catch (SQLException e) {
-			log.warn("Exception at getByIdWithCars method.");
+			log.warn("Exception at getByIdWithCars method.", e);
 			return null;
 		}
 	}

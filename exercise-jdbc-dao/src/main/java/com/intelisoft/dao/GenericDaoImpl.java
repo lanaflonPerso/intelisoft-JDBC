@@ -29,7 +29,7 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 			fillPStatement(ps, model, false).executeUpdate();
 
 		} catch (SQLException e) {
-			log.warn("Exceplion at create method.");
+			log.warn("Exceplion at create method.", e);
 		}
 	}
 
@@ -48,7 +48,7 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 			return model;
 
 		} catch (SQLException e) {
-			log.warn("Exception at getById method.");
+			log.warn("Exception at getById method.", e);
 			return null;
 		}
 	}
@@ -64,7 +64,7 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 
 			return modelList;
 		} catch (SQLException e) {
-			log.warn("Exception at getAll method.");
+			log.warn("Exception at getAll method.", e);
 			return null;
 		}
 	}
@@ -77,7 +77,7 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 			fillPStatement(ps, model, true).executeUpdate();
 
 		} catch (SQLException e) {
-			log.warn("Exception at update method.");
+			log.warn("Exception at update method.", e);
 		}
 	}
 
@@ -90,7 +90,7 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
-			log.warn("Exception at delete method.");
+			log.warn("Exception at delete method.", e);
 		}
 	}
 
