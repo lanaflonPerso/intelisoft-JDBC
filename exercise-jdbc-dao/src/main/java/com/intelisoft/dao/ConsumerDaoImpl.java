@@ -50,7 +50,7 @@ public class ConsumerDaoImpl extends GenericDaoImpl<Consumer> implements IConsum
 
 		rs.next();
 		Consumer consumer = toModel(rs);
-		if (rs.getString("maker") != null) {
+		if (rs.getString("car.id") != null) {
 			List<Car> carList = new ArrayList<>();
 			do {
 				Car car = new CarDaoImpl().toModel(rs);
