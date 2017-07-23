@@ -15,11 +15,19 @@ abstract class GenericDaoImpl<T extends Model> implements IModelDao<T> {
 
 	private static final Logger log = Logger.getLogger(GenericDaoImpl.class);
 
-	String CREATE;
-	String GET_BY_ID;
-	String GET_ALL;
-	String UPDATE;
-	String DELETE;
+	private final String CREATE;
+	private final String GET_BY_ID;
+	private final String GET_ALL;
+	private final String UPDATE;
+	private final String DELETE;
+
+	protected GenericDaoImpl(String CREATE, String GET_BY_ID, String GET_ALL, String UPDATE, String DELETE) {
+		this.CREATE = CREATE;
+		this.GET_BY_ID = GET_BY_ID;
+		this.GET_ALL = GET_ALL;
+		this.UPDATE = UPDATE;
+		this.DELETE = DELETE;
+	}
 
 	@Override
 	public void create(T model, Connection connection) throws SQLException {

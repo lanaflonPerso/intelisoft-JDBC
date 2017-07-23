@@ -1,4 +1,4 @@
-#SET global time_zone = `+02:00`;
+SET global time_zone = `+02:00`;
 
 CREATE SCHEMA if not exists `auto_service_db` DEFAULT CHARACTER SET utf8;
 

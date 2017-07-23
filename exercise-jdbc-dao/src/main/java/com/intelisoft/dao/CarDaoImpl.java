@@ -17,14 +17,16 @@ public class CarDaoImpl extends GenericDaoImpl<Car> implements ICarDao {
 
 	private static final Logger log = Logger.getLogger(CarDaoImpl.class);
 
+	private final static String CREATE = "INSERT INTO car (maker, model, productionYear, color, engineType, odometer) VALUES ((?), (?), (?), (?), (?), (?))";
+	private final static String GET_BY_ID = "SELECT * FROM car WHERE id = (?)";
+	private final static String GET_ALL = "SELECT * FROM car";
+	private final static String UPDATE = "UPDATE car SET maker = (?), model = (?), productionYear = (?), color = (?), engineType = (?), odometer = (?) WHERE id = (?)";
+	private final static String DELETE = "DELETE FROM car WHERE id = (?)";
+
 	private final String CAR_GET_BY_ID_WITH_CONSUMER = "SELECT * FROM car LEFT OUTER JOIN consumer ON car.consumer_id = consumer.id WHERE car.id = (?)";
 
 	public CarDaoImpl() {
-		super.CREATE = "INSERT INTO car (maker, model, productionYear, color, engineType, odometer) VALUES ((?), (?), (?), (?), (?), (?))";
-		super.GET_BY_ID = "SELECT * FROM car WHERE id = (?)";
-		super.GET_ALL = "SELECT * FROM car";
-		super.UPDATE = "UPDATE car SET maker = (?), model = (?), productionYear = (?), color = (?), engineType = (?), odometer = (?) WHERE id = (?)";
-		super.DELETE = "DELETE FROM car WHERE id = (?)";
+		super(CREATE, GET_BY_ID, GET_ALL, UPDATE, DELETE);
 	}
 
 	@Override
